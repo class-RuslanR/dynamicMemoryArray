@@ -6,7 +6,7 @@ void funcShow(int *array, int s)
 {
 	for (int i = 0; i < s; ++i)
 	{
-		cout << "[" << i << "]" << " = " << array[i] << "    ";
+		cout << array[i] << "   ";
 	}
 	cout << "\n";
 }
@@ -17,7 +17,7 @@ int main()
 	int *arr = NULL;
 
 	/* закомментирован альтернативный вариант с выделением 
-	динамической памяти для одного элемента arr[0]
+	динамической памяти для первого элемента arr[0]
 
 	arr = (int*)malloc(sizeof(int));
 	cin >> num;
@@ -26,7 +26,7 @@ int main()
 		arr[0] = num;
 	}*/
 
-	cout << "Вводите числа: " << endl;
+	cout << "Введите целое число >0 : " << endl;
 	cin >> num;
 	for (int i = 0; num; ++i)
 	{
@@ -35,11 +35,14 @@ int main()
 			arr = (int*)realloc(arr, (i + 1) * sizeof(int));
 			arr[i] = num;
 			size++;
+			funcShow(arr, size);
 		}
 		else
 		{
+			cout << "\nПопытка ввести число <=0\n\n";
 			break;
 		}
+		cout << "Введите целое число >0 : " << endl;
 		cin >> num;
 	}
 	funcShow(arr, size);
